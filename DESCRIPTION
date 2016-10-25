@@ -1,14 +1,16 @@
 Package: captchaSajData
 Type: Package
 Title: Captchas baixados dos tribunais que posuem o sistem eSaj
+Encoding: UTF-8
 Version: 0.0.0.9000
 Authors@R: person("Daniel", "Falbel", email = "dfalbel@gmail.com", role = c("aut", "cre"))
 Description: Os captchas baixados neste pacote podem ser usados na construção
-  de modelos estatísticos com o objetivo de entender o que está escrito na
-  imagem.
+    de modelos estatísticos com o objetivo de entender o que está escrito na
+    imagem.
 License: MIT + file LICENSE
 LazyData: TRUE
 Imports:
-  grid,
-  httr,
-  png
+    grid,
+    httr,
+    png
+RoxygenNote: 5.0.1

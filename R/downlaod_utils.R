@@ -27,6 +27,7 @@ baixar <- function(url, file =NULL){
 #'
 #' @param n quantidade de captchas
 #' @param url do capctha
+#' @param folder pasta para salvar os capcthas baixados
 #'
 baixar_captchas <- function(n, url = url(), folder){
   for(i in 1:n){
