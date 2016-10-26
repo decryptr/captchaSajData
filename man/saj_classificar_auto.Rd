@@ -4,11 +4,13 @@
 \alias{saj_classificar_auto}
 \title{Classifica automaticamente N captchas}
 \usage{
-saj_classificar_auto(N, folder_img = getwd(), folder_aud = folder_img,
-  verbose = TRUE, intervalo = 50L)
+saj_classificar_auto(N, tj = "sp", folder_img = getwd(),
+  folder_aud = folder_img, verbose = TRUE, intervalo = 50L)
 }
 \arguments{
 \item{N}{número de captchas a serem baixados e classificados automaticamente.}
+
+\item{tj}{Qual o tribunal. Atualmente funciona para 'sc' e 'sp'}
 
 \item{folder_img}{pasta onde os arquivos de imagem serão salvos. Default para pasta atual.}
 

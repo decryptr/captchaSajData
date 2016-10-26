@@ -12,7 +12,7 @@ saj_baixar_captchas(N, baixar_audio = FALSE, tj = "sp", folder,
 
 \item{baixar_audio}{se \code{TRUE} baixa o áudio além da imagem (necessário especificar \code{folder_audio}).}
 
-\item{tj}{Tribunal de origem do captcha (por enquanto só "sp").}
+\item{tj}{Tribunal de origem do captcha (por enquanto só "sp" e "sc").}
 
 \item{folder}{pasta em que os captchas serão salvos.}
 
