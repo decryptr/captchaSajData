@@ -7,7 +7,7 @@
 saj_baixar(files, tipo = "both", tj = "sp")
 }
 \arguments{
-\item{files}{arquivos para salvar os captchas. Deve ter tamanho 1 se tipo for audio ou image e deve ter tamanho 2 se tipo for both.}
+\item{files}{arquivos para salvar os captchas. Deve ter tamanho 1 se tipo for audio ou image e deve ter tamanho 2 se tipo for both (primeiro image depois audio).}
 
 \item{tipo}{"audio" para audio e "image" para imagem, 'both' para ambos. Default "both".}
 

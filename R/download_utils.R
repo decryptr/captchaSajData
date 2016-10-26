@@ -2,7 +2,7 @@
 #'
 #' Baixar um captcha dependendo do TJ
 #'
-#' @param files arquivos para salvar os captchas. Deve ter tamanho 1 se tipo for audio ou image e deve ter tamanho 2 se tipo for both.
+#' @param files arquivos para salvar os captchas. Deve ter tamanho 1 se tipo for audio ou image e deve ter tamanho 2 se tipo for both (primeiro image depois audio).
 #' @param tipo "audio" para audio e "image" para imagem, 'both' para ambos. Default "both".
 #' @param tj TJ do captcha
 #'
@@ -13,20 +13,18 @@ saj_baixar <- function(files, tipo = 'both', tj = 'sp') {
       u0 <- 'https://esaj.tjsp.jus.br/cjsg/getArquivo.do'
       u_aud <- 'https://esaj.tjsp.jus.br/cjsg/somCaptcha.do'
       r0 <- httr::GET(u0)
+      wd_aud <- httr::write_disk(files[2], overwrite = TRUE)
     }
     if (tipo %in% c('both', 'image')) {
       u_img <- 'https://esaj.tjsp.jus.br/cjsg/imagemCaptcha.do'
+      wd_img <- httr::write_disk(files[1], overwrite = TRUE)
     }
-    if (tipo == 'both') {
-      httr::GET(u_img, httr::write_disk(files[1], overwrite = TRUE))
-      httr::GET(u_aud, httr::write_disk(files[2], overwrite = TRUE))
-    } else if (tipo == 'image') {
-      httr::GET(u_img, httr::write_disk(files, overwrite = TRUE))
-    } else if (tipo == 'audio') {
-      httr::GET(u_aud, httr::write_disk(files, overwrite = TRUE))
-    }
+    if (tipo %in% c('both', 'image')) httr::GET(u_img, wd_img)
+    if (tipo %in% c('both', 'audio')) httr::GET(u_aud, wd_aud)
   } else if (tj == 'sc') {
     stop('Not implemented yet.')
+
+
   }
   return(files)
 }
@@ -98,7 +96,7 @@ saj_classificar_auto <- function(N, folder_img = getwd(), folder_aud = folder_im
                              verbose = TRUE, intervalo = 50L) {
   if (!requireNamespace('captchaSajAudio', quietly = TRUE)) {
     result <- utils::menu(title = 'Deseja instalar o pacote captchaSajAudio?',
-                          choices = c('Sim', 'Não'))
+                          choices = c('Sim', 'N\u00e3o'))
     if (result == 1L) {
       devtools::install_github('decryptr/captchaSajAudio')
     } else {
